@@ -24,6 +24,11 @@ public class Main {
         }
 
 
+        List<Theater.Seat> priceSeats = new ArrayList<>(theater.getSeats());
+        priceSeats.add(theater.new Seat("B00", 13.00));
+        priceSeats.add(theater.new Seat("A00", 13.00));
+        Collections.sort(priceSeats, Theater.PRICE_ORDER);
+        printList(priceSeats);
 
     }
 

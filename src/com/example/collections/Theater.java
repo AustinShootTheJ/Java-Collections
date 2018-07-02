@@ -6,6 +6,24 @@ public class Theater {
     private final String theaterName;
     private List<Seat> seats = new ArrayList<>();
 
+    // rather than overriding the compareto method you can also create an object of type Comparator in order to compare objects.
+    static final Comparator <Seat> PRICE_ORDER;
+
+    static {
+        PRICE_ORDER = new Comparator<Seat>() {
+            @Override
+            public int compare(Seat seat1, Seat seat2) {
+                if (seat1.getPrice() < seat2.getPrice()) {
+                    return -1;
+                } else if (seat1.getPrice() > seat2.getPrice()) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        };
+    }
+
     public Theater(String theaterName, int numRows, int seatsPerRow) {
         this.theaterName = theaterName;
         int lastRow = 'A' + (numRows -1);
